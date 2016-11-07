@@ -10,12 +10,18 @@ public class InOutStreamPump implements Closeable {
 	private byte[] buffer;
 	private InputStream in;
 	private OutputStream out;
+	
+	public static int STANDARD_BUFFER_SIZE = 0x10000;
 
 	public InOutStreamPump(InputStream in, OutputStream out, int bufSize) {
 		super();
 		this.buffer = new byte[bufSize];
 		this.in = in;
 		this.out = out;
+	}
+	
+	public InOutStreamPump(InputStream in, OutputStream out) {
+		this(in, out, STANDARD_BUFFER_SIZE);
 	}
 
 	@Override
