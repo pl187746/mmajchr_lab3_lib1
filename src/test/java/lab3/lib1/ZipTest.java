@@ -3,9 +3,12 @@ package lab3.lib1;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.zip.ZipOutputStream;
 
 import org.junit.After;
 import org.junit.Test;
@@ -34,6 +37,11 @@ public class ZipTest {
 	        }
 	    }
 	    file.delete();
+	}	
+
+	@Test
+	public void zipOne() throws FileNotFoundException, IOException {
+		Zip.zipFile(new File("pom.xml"), new ZipOutputStream(new FileOutputStream(new File("test_zip_out_1.zip"))));
 	}
 
 }
