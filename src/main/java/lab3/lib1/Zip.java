@@ -62,4 +62,37 @@ public class Zip {
 	public static void zipFile(File file, ZipOutputStream zo) throws IOException {
 		zipFile(file, file.getName(), zo);
 	}
+	
+	public static void zipFile(InputStream in, String name, OutputStream out) throws IOException {
+		try(ZipOutputStream zo = new ZipOutputStream(out)) {
+			zipFile(in, name, zo);
+		}
+	}
+	
+	public static void zipFile(File file, String name, OutputStream out) throws IOException {
+		try(FileInputStream fin = new FileInputStream(file)) {
+			zipFile(fin, name, out);
+		}
+	}
+	
+	public static void zipFile(File file, OutputStream out) throws IOException {
+		zipFile(file, file.getName(), out);
+	}
+	
+	public static void zipFile(InputStream in, String name, File out) throws IOException {
+		try(FileOutputStream fout = new FileOutputStream(out)) {
+			zipFile(in, name, fout);
+		}
+	}
+	
+	public static void zipFile(File file, String name, File out) throws IOException {
+		try(FileInputStream fin = new FileInputStream(file)) {
+			zipFile(fin, name, out);
+		}
+	}
+	
+	public static void zipFile(File file, File out) throws IOException {
+		zipFile(file, file.getName(), out);
+	}
+
 }
