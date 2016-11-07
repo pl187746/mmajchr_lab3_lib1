@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.nio.file.Path;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 public class Zip {
 
@@ -39,6 +40,10 @@ public class Zip {
 		try(FileInputStream fin = new FileInputStream(zip)) {
 			unzip(fin, dir);
 		}
+	}
+	
+	public static void zip(Path path, ZipOutputStream zo) {
+		;
 	}
 
 }
