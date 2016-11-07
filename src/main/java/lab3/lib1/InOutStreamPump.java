@@ -26,8 +26,11 @@ public class InOutStreamPump implements Closeable {
 
 	@Override
 	public void close() throws IOException {
-		out.close();
-		in.close();
+		try {
+			in.close();
+		} finally {
+			out.close();
+		}
 	}
 	
 	public int pump() throws IOException {
