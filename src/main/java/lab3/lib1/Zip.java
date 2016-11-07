@@ -44,36 +44,4 @@ public class Zip {
 		}
 	}
 	
-	public static void zip(Path path, ZipOutputStream zo) throws IOException {
-		zip(path, null, zo);
-	}
-	
-	private static void zip(Path path, String sub, ZipOutputStream zo) throws IOException {
-		if(sub != null) {
-			File file = path.resolve(sub).toFile();
-			if(!file.isDirectory()) {
-				ZipEntry entry = new ZipEntry(sub);
-				zo.putNextEntry(entry);
-				try(FileInputStream fin = new FileInputStream(file)) {
-					@SuppressWarnings("resource")
-					InOutStreamPump pump = new InOutStreamPump(fin, zo);
-					while(pump.pump() > 0);
-					zo.closeEntry();
-				}
-			}
-		}
-	}
-	
-	public static void zip(Path path, OutputStream out) throws IOException {
-		try(ZipOutputStream zo = new ZipOutputStream(out)) {
-			zip(path, zo);
-		}
-	}
-	
-	public static void zip(Path path, File out) throws IOException {
-		try(FileOutputStream fout = new FileOutputStream(out)) {
-			zip(path, fout);
-		}
-	}
-
 }
