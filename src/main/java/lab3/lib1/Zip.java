@@ -19,6 +19,7 @@ public class Zip {
 				path.mkdirs();
 			} else {
 				try(FileOutputStream fout = new FileOutputStream(path)) {
+					@SuppressWarnings("resource")
 					InOutStreamPump pump = new InOutStreamPump(zip, fout);
 					while(pump.pump() > 0);
 				}
