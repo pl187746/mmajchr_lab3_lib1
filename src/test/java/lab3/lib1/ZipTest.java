@@ -4,6 +4,7 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Paths;
 
 import org.junit.After;
@@ -16,6 +17,8 @@ public class ZipTest {
 		Zip.unzip(new File("test_zip_in.zip"), Paths.get("test_unzipped"));
 		File file = new File("test_unzipped/lol.txt");
 		assertTrue(file.exists());
+		String cnt = new String(Files.readAllBytes(Paths.get("test_unzipped/lol.txt")));
+		assertTrue("rotfl".equals(cnt));
 	}
 
 	@After
