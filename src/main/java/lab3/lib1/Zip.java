@@ -23,6 +23,7 @@ public class Zip {
 					@SuppressWarnings("resource")
 					InOutStreamPump pump = new InOutStreamPump(zip, fout);
 					while(pump.pump() > 0);
+					zip.closeEntry();
 				}
 			}
 		}
