@@ -67,5 +67,11 @@ public class Zip {
 			zip(path, zo);
 		}
 	}
+	
+	public static void zip(File path, File out) throws IOException {
+		try(FileOutputStream fout = new FileOutputStream(out)) {
+			zip(path, fout);
+		}
+	}
 
 }
