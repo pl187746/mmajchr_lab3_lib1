@@ -1,6 +1,7 @@
 package lab3.lib1;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,9 +28,15 @@ public class Zip {
 		}
 	}
 	
-	public static void unzio(InputStream in, Path dir) throws IOException {
+	public static void unzip(InputStream in, Path dir) throws IOException {
 		try(ZipInputStream zip = new ZipInputStream(in)) {
 			unzip(zip, dir);
+		}
+	}
+	
+	public static void unzip(File zip, Path dir) throws IOException {
+		try(FileInputStream fin = new FileInputStream(zip)) {
+			unzip(fin, dir);
 		}
 	}
 
