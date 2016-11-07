@@ -41,9 +41,7 @@ public class ZipTest {
 
 	@Test
 	public void zipOne() throws FileNotFoundException, IOException {
-		try(ZipOutputStream zo = new ZipOutputStream(new FileOutputStream(new File("test_zip_out_1.zip")))) {
-			Zip.zipFile(new File("pom.xml"), zo);
-		}
+		Zip.zipFile(new File("pom.xml"), new File("test_zip_out_1.zip"));
 	}
 
 }

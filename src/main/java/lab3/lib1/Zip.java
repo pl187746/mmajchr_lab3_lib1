@@ -94,5 +94,9 @@ public class Zip {
 	public static void zipFile(File file, File out) throws IOException {
 		zipFile(file, file.getName(), out);
 	}
+	
+	public static void zipDir(File dir, String name, ZipOutputStream zo) {
+		
+	}
 
 }
