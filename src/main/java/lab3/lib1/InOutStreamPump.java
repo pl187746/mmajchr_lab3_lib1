@@ -10,6 +10,7 @@ public class InOutStreamPump implements Closeable {
 	private byte[] buffer;
 	private InputStream in;
 	private OutputStream out;
+	private int total;
 	
 	public static int STANDARD_BUFFER_SIZE = 0x10000;
 
@@ -37,8 +38,13 @@ public class InOutStreamPump implements Closeable {
 		int read = in.read(buffer);
 		if(read > 0) {
 			out.write(buffer, 0, read);
+			total += read;
 		}
 		return read;
+	}
+	
+	public int getTotal() {
+		return total;
 	}
 
 }
