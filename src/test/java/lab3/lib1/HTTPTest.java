@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.net.URL;
 
+import org.junit.After;
 import org.junit.Test;
 
 public class HTTPTest {
@@ -24,6 +25,12 @@ public class HTTPTest {
 		int size = HTTP.download(url, file);
 		assertTrue(file.exists());
 		assertEquals(file.length(), size);
+	}
+	
+	@After
+	public void usunRegulamin() {
+		File file = new File("regulamin.pdf");
+		file.delete();
 	}
 
 }
