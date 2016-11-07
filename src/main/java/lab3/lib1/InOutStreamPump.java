@@ -1,9 +1,11 @@
 package lab3.lib1;
 
+import java.io.Closeable;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class InOutStreamPump {
+public class InOutStreamPump implements Closeable {
 
 	private byte[] buffer;
 	private InputStream in;
@@ -14,6 +16,12 @@ public class InOutStreamPump {
 		this.buffer = new byte[bufSize];
 		this.in = in;
 		this.out = out;
+	}
+
+	@Override
+	public void close() throws IOException {
+		out.close();
+		in.close();
 	}
 
 }
