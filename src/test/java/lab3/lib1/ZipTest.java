@@ -35,10 +35,5 @@ public class ZipTest {
 	    }
 	    file.delete();
 	}
-	
-	@Test
-	public void zip() throws IOException {
-		Zip.zip(new File("src"), new File("test_zip_out.zip"));
-	}
 
 }
