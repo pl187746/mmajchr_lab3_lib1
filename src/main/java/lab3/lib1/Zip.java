@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.zip.ZipEntry;
@@ -58,6 +59,12 @@ public class Zip {
 				while(pump.pump() > 0);
 				zo.closeEntry();
 			}
+		}
+	}
+	
+	public static void zip(File path, OutputStream out) throws IOException {
+		try(ZipOutputStream zo = new ZipOutputStream(out)) {
+			zip(path, zo);
 		}
 	}
 
