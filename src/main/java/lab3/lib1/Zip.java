@@ -52,4 +52,14 @@ public class Zip {
 		while(pump.pump() > 0);
 		zo.closeEntry();
 	}
+	
+	public static void zipFile(File file, String name, ZipOutputStream zo) throws IOException {
+		try(FileInputStream fin = new FileInputStream(file)) {
+			zipFile(fin, name, zo);
+		}
+	}
+	
+	public static void zipFile(File file, ZipOutputStream zo) throws IOException {
+		zipFile(file, file.getName(), zo);
+	}
 }
