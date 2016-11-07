@@ -7,11 +7,12 @@ import java.net.URL;
 
 public class HTTP {
 
-	public static void download(URL url, OutputStream dest) throws IOException {
+	public static int download(URL url, OutputStream dest) throws IOException {
 		try(InputStream src = url.openStream()) {
 			@SuppressWarnings("resource")
 			InOutStreamPump pump = new InOutStreamPump(src, dest);
 			while(pump.pump() > 0);
+			return pump.getTotal();
 		}
 	}
 	
