@@ -43,5 +43,8 @@ public class Zip {
 			unzip(fin, dir);
 		}
 	}
-	
+
+	public static void zipFile(InputStream in, String name, ZipOutputStream zo) {
+		;
+	}
 }
