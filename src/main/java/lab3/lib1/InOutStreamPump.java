@@ -23,5 +23,10 @@ public class InOutStreamPump implements Closeable {
 		out.close();
 		in.close();
 	}
+	
+	public void pump() throws IOException {
+		int r = in.read(buffer);
+		out.write(buffer, 0, r);
+	}
 
 }
