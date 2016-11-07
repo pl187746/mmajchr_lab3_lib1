@@ -44,7 +44,12 @@ public class Zip {
 		}
 	}
 
-	public static void zipFile(InputStream in, String name, ZipOutputStream zo) {
-		;
+	public static void zipFile(InputStream in, String name, ZipOutputStream zo) throws IOException {
+		ZipEntry entry = new ZipEntry(name);
+		zo.putNextEntry(entry);
+		@SuppressWarnings("resource")
+		InOutStreamPump pump = new InOutStreamPump(in, zo);
+		while(pump.pump() > 0);
+		zo.closeEntry();
 	}
 }
