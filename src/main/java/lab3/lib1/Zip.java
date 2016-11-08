@@ -95,8 +95,13 @@ public class Zip {
 		zipFile(file, file.getName(), out);
 	}
 	
-	public static void zipDir(File dir, String name, ZipOutputStream zo) {
-		
+	public static void zipDir(File dir, String name, ZipOutputStream zo) throws IOException {
+		File[] files = dir.listFiles();
+		for(File f : files) {
+			String fn = Optional.ofNullable(name).map(p -> p + "/").orElse("") + f.getName();
+			File sub = dir.toPath().resolve(f.getName()).toFile();
+			zipFile(sub, fn, zo);
+		}
 	}
 
 }
