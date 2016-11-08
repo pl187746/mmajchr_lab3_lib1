@@ -107,5 +107,17 @@ public class Zip {
 			}
 		}
 	}
+	
+	public static void zipDir(File dir, String name, OutputStream out) throws IOException {
+		try(ZipOutputStream zo = new ZipOutputStream(out)) {
+			zipDir(dir, name, zo);
+		}
+	}
+	
+	public static void zipDir(File dir, String name, File out) throws IOException {
+		try(FileOutputStream fout = new FileOutputStream(out)) {
+			zipDir(dir, name, fout);
+		}
+	}
 
 }
