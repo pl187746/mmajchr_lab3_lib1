@@ -40,8 +40,13 @@ public class ZipTest {
 	}	
 
 	@Test
-	public void zipOne() throws FileNotFoundException, IOException {
+	public void zipOne() throws IOException {
 		Zip.zipFile(new File("pom.xml"), new File("test_zip_out_1.zip"));
+	}
+	
+	@Test
+	public void zipDir() throws IOException {
+		Zip.zipDir(new File("src"), new File("test_zip_out_d.zip"));
 	}
 
 }
