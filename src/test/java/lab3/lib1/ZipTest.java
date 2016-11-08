@@ -48,5 +48,11 @@ public class ZipTest {
 	public void zipDir() throws IOException {
 		Zip.zipDir(new File("src"), new File("test_zip_out_d.zip"));
 	}
+	
+	@After
+	public void deleteZips() {
+		new File("test_zip_out_1.zip").delete();
+		new File("test_zip_out_d.zip").delete();
+	}
 
 }
