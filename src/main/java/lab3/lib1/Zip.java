@@ -100,7 +100,11 @@ public class Zip {
 		for(File f : files) {
 			String fn = Optional.ofNullable(name).map(p -> p + "/").orElse("") + f.getName();
 			File sub = dir.toPath().resolve(f.getName()).toFile();
-			zipFile(sub, fn, zo);
+			if(sub.isDirectory()) {
+				zipDir(sub, fn, zo);
+			} else {
+				zipFile(sub, fn, zo);
+			}
 		}
 	}
 
