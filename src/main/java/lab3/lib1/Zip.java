@@ -119,5 +119,17 @@ public class Zip {
 			zipDir(dir, name, fout);
 		}
 	}
+	
+	public static void zipDir(File dir, ZipOutputStream zo) throws IOException {
+		zipDir(dir, null, zo);
+	}
+	
+	public static void zipDir(File dir, OutputStream out) throws IOException {
+		zipDir(dir, null, out);
+	}
+	
+	public static void zipDir(File dir, File out) throws IOException {
+		zipDir(dir, null, out);
+	}
 
 }
